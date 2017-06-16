@@ -1,0 +1,30 @@
+{
+  "name": "react-mapbox-search",
+  "version": "0.1.0",
+  "description": "Use Mapbox's places API to search for locations. Comes with a Component that autocompletes with suggestions from Mapbox and a query runner that you can use with your own Component.",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=production ./node_modules/.bin/babel ./src -o index.js",
+    "prepublish": "yarn run build"
+  },
+  "repository": "https://github.com/MikeyParton/react-mapbox-search",
+  "author": "Mike Parton",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-preset-react-app": "^3.0.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-icons": "^2.2.5",
+    "styled-components": "^2.1.0"
+  }
+}
