@@ -1,6 +1,6 @@
 {
   "name": "react-mapbox-search",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Use Mapbox's places API to search for locations. Comes with a Component that autocompletes with suggestions from Mapbox and a query runner that you can use with your own Component.",
   "main": "dist/index",
   "scripts": {

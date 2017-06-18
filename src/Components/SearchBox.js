@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Suggestions from './Suggestions'
 import SearchInput from './SearchInput'
-import { getResults } from '../utils/Helpers'
+import { getResults } from '../utils/helpers'
 
 const SearchBoxWrapper = styled.div`
   width: 100%;
