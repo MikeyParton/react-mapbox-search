@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Suggestion from './Suggestion'
 
-const SuggestionsBox = styled.span`
+const Wrapper = styled.span`
   position: relative;
   display: ${({hasResults}) => hasResults ? 'flex' : 'none'};
   z-index: 9999;
@@ -19,8 +19,8 @@ const SuggestionsList = styled.div`
   width: 100%;
 `
 
-export default ({places, hasResults}) => (
-  <SuggestionsBox hasResults={hasResults}>
+const Suggestions = ({places, hasResults}) => (
+  <Wrapper hasResults={hasResults}>
     <SuggestionsList>
       {
         places.map(place => {
@@ -28,5 +28,7 @@ export default ({places, hasResults}) => (
         })
       }
     </SuggestionsList>
-  </SuggestionsBox>
+  </Wrapper>
 )
+
+export default Suggestions

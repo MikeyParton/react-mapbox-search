@@ -5,7 +5,7 @@ const buildQuery = (query, token, country = undefined) => {
   return country ? with_country : no_country
 }
 
-export async function getResults (query, token, country = undefined) {
+const getResults = async function (query, token, country = undefined) {
   if (query === '') {
     return {
       response: {
@@ -36,3 +36,5 @@ export async function getResults (query, token, country = undefined) {
     return { error }
   }
 }
+
+export { getResults }

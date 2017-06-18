@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Suggestions from './Suggestions'
 import SearchInput from './SearchInput'
-import { getResults } from './Helpers'
+import { getResults } from '../utils/Helpers'
 
 const SearchBoxWrapper = styled.div`
   width: 100%;
@@ -62,4 +62,4 @@ class SearchBox extends React.Component {
   }
 }
 
-export { SearchBox }
+export default SearchBox

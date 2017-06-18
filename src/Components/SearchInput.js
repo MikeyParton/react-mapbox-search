@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import FaSearch from 'react-icons/lib/fa/search'
 
-const SearchInputWrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   height: 100%;
 `
 
-const SearchInput = styled.input`
+const InputWrapper = styled.input`
   height: 100%;
   width: 100%;
   text-indent: 40px;
@@ -18,14 +18,16 @@ const SearchInput = styled.input`
   ${props => props.hasResults && 'border-bottom-right-radius: 0;'}
 `
 
-export default ({query, handleInputChange, hasResults}) => (
-  <SearchInputWrapper>
+const SearchInput = ({query, handleInputChange, hasResults}) => (
+  <Wrapper>
     <FaSearch />
-    <SearchInput
+    <InputWrapper
       hasResults={hasResults}
       placeholder='Search'
       value={query}
       onChange={handleInputChange}
     />
-  </SearchInputWrapper>
+  </Wrapper>
 )
+
+export default SearchInput
