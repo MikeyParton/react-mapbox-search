@@ -60,7 +60,6 @@ class SearchBox extends React.Component {
     if (this.state.getMouseInSuggestions) {
       return;
     }
-    console.log(event.keyCode);
     switch (event.keyCode) {
       case 38: {
         // up arrow pressed
