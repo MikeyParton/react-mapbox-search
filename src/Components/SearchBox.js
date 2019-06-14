@@ -58,20 +58,20 @@ class SearchBox extends React.Component {
 
   handleArrowKeys = event => {
     if (this.state.getMouseInSuggestions) {
-      event.preventDefault();
-      event.stopPropagation();
       return;
     }
     console.log(event.keyCode);
     switch (event.keyCode) {
       case 38: {
         // up arrow pressed
+        event.preventDefault();
         if (this.hasResults() && this.state.cursorIdx > 0)
           this.setState(prevState => ({ cursorIdx: prevState.cursorIdx - 1 }));
         break;
       }
       case 40: {
         // down arrow pressed
+        event.preventDefault();
         if (
           this.hasResults() &&
           this.state.cursorIdx < this.state.queryResults.length - 1
@@ -82,7 +82,7 @@ class SearchBox extends React.Component {
 
       case 13: {
         // enter pressed
-
+        event.preventDefault();
         if (this.hasResults()) {
           this.handleClick({
             place_name: this.state.queryResults[this.state.cursorIdx].place_name
