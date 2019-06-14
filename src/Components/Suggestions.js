@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Suggestion from "./Suggestion";
 
@@ -15,20 +15,49 @@ const Wrapper = styled.span`
 `;
 
 const SuggestionsList = styled.div`
-  padding-top: 10px;
   width: 100%;
 `;
 
-const Suggestions = ({ places, hasResults, clickHandler }) => (
-  <Wrapper hasResults={hasResults}>
-    <SuggestionsList>
-      {places.map(place => {
-        return (
-          <Suggestion clickHandler={clickHandler} key={place.id} {...place} />
-        );
-      })}
-    </SuggestionsList>
-  </Wrapper>
-);
+const Suggestions = ({
+  places,
+  hasResults,
+  clickHandler,
+  cursorIdx,
+  getMouseInSuggestions
+}) => {
+  const [mouseInSuggestions, setMouseInSuggestions] = useState(false);
+
+  const handleMouseEnter = () => {
+    console.log("mouseEntered");
+    setMouseInSuggestions(true);
+    getMouseInSuggestions(true);
+  };
+
+  const handleMouseLeave = () => {
+    console.log("mouseLeft");
+    setMouseInSuggestions(false);
+    getMouseInSuggestions(false);
+  };
+
+  return (
+    <Wrapper hasResults={hasResults}>
+      <SuggestionsList
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {places.map((place, idx) => (
+          <Suggestion
+            mouseInSuggestions={mouseInSuggestions}
+            idx={idx}
+            cursorIdx={cursorIdx}
+            clickHandler={clickHandler}
+            key={place.id}
+            {...place}
+          />
+        ))}
+      </SuggestionsList>
+    </Wrapper>
+  );
+};
 
 export default Suggestions;

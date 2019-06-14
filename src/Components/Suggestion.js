@@ -13,8 +13,21 @@ const Wrapper = styled.div`
   }
 `;
 
-const Suggestion = ({ place_name, clickHandler }) => (
-  <Wrapper onClick={event => clickHandler({ place_name, event })}>
+const Suggestion = ({
+  place_name,
+  clickHandler,
+  cursorIdx,
+  idx,
+  mouseInSuggestions
+}) => (
+  <Wrapper
+    style={
+      cursorIdx === idx && !mouseInSuggestions
+        ? { color: "white", background: "#58a" }
+        : null
+    }
+    onClick={event => clickHandler({ place_name, event })}
+  >
     {place_name}
   </Wrapper>
 );
