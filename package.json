@@ -7,7 +7,7 @@
     "prebuild": "rimraf dist",
     "build": "babel --out-dir dist --ignore *.test.js src",
     "test": "jest src",
-    "prepublish": "yarn run build"
+    "prepublish": "npm run build"
   },
   "repository": "https://github.com/MikeyParton/react-mapbox-search",
   "author": "Mike Parton",
