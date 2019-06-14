@@ -49,7 +49,7 @@ class SearchBox extends React.Component {
   }
 
   handleClick = ({ event, place_name }) => {
-    this.setState({ query: place_name });
+    this.setState({ query: place_name, queryResults: [] });
     this.props.callback({ location: place_name, event });
   };
 
