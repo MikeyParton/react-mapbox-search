@@ -28,7 +28,6 @@ class SearchBox extends React.Component {
       getMouseInSuggestions: false,
       inputFocused: false
     };
-    this.inputRef = React.createRef();
   }
 
   handleInputChange = event => {

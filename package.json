@@ -1,25 +1,17 @@
 {
   "name": "react-mapbox-search",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Use Mapbox's places API to search for locations. Comes with a Component that autocompletes with suggestions from Mapbox and a query runner that you can use with your own Component.",
   "main": "dist/index",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "babel --out-dir dist --ignore *.test.js src",
-    "test": "jest src",
+    "test": "jest test",
     "prepublish": "npm run build"
   },
   "repository": "https://github.com/MikeyParton/react-mapbox-search",
   "author": "Mike Parton",
   "license": "MIT",
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      "add-module-exports"
-    ]
-  },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
@@ -31,8 +23,9 @@
     "babel-preset-react-app": "^3.0.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.23.0",
-    "enzyme": "^2.8.2",
+    "enzyme": "^3.0.0",
     "jest": "^20.0.4",
+    "enzyme-adapter-react-15": "^1.4.0",
     "react-addons-test-utils": "^15.6.0"
   },
   "dependencies": {
@@ -40,8 +33,10 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-icons": "^2.2.5",
+    "react-test-renderer": "^15.6.2",
     "rimraf": "^2.6.1",
-    "styled-components": "^2.1.0"
+    "styled-components": "^2.1.0",
+    "webpack": "^2.7.0"
   },
   "files": [
     "dist"
