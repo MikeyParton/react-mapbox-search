@@ -23,7 +23,8 @@ const Suggestions = ({
   hasResults,
   clickHandler,
   cursorIdx,
-  getMouseInSuggestions
+  getMouseInSuggestions,
+  selectColor
 }) => {
   const [mouseInSuggestions, setMouseInSuggestions] = useState(false);
 
@@ -45,6 +46,7 @@ const Suggestions = ({
       >
         {places.map((place, idx) => (
           <Suggestion
+            selectColor={selectColor}
             mouseInSuggestions={mouseInSuggestions}
             idx={idx}
             cursorIdx={cursorIdx}

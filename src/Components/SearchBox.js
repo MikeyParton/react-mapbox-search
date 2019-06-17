@@ -122,6 +122,7 @@ class SearchBox extends React.Component {
         />
         <Suggestions
           places={this.state.queryResults}
+          selectColor={this.props.selectColor}
           hasResults={this.showResults()}
           clickHandler={this.handleClick}
           cursorIdx={this.state.cursorIdx}
