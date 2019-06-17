@@ -9,7 +9,7 @@ const Wrapper = styled.span`
   background-color: #fff;
   border: 1px solid #ccc;
   border-top: none;
-  border-color: #979797;
+  border-color: #d3d3d3;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 `;
@@ -28,13 +28,11 @@ const Suggestions = ({
   const [mouseInSuggestions, setMouseInSuggestions] = useState(false);
 
   const handleMouseEnter = () => {
-    console.log("mouseEntered");
     setMouseInSuggestions(true);
     getMouseInSuggestions(true);
   };
 
   const handleMouseLeave = () => {
-    console.log("mouseLeft");
     setMouseInSuggestions(false);
     getMouseInSuggestions(false);
   };

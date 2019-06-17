@@ -14,7 +14,7 @@ const SearchBoxWrapper = styled.div`
     left: 15px;
     top: 50%;
     transform: translate(0, -50%);
-    fill: ${"#D3D3D3"};
+    fill: #d3d3d3;
   }
 `;
 
@@ -36,7 +36,7 @@ class SearchBox extends React.Component {
     });
   };
 
-  hasResults = () => {
+  showResults = () => {
     return this.state.queryResults.length > 0 && !this.state.mouseLeft;
   };
 
@@ -64,7 +64,7 @@ class SearchBox extends React.Component {
       case 38: {
         // up arrow pressed
         event.preventDefault();
-        if (this.hasResults() && this.state.cursorIdx > 0)
+        if (this.showResults() && this.state.cursorIdx > 0)
           this.setState(prevState => ({ cursorIdx: prevState.cursorIdx - 1 }));
         break;
       }
@@ -72,7 +72,7 @@ class SearchBox extends React.Component {
         // down arrow pressed
         event.preventDefault();
         if (
-          this.hasResults() &&
+          this.showResults() &&
           this.state.cursorIdx < this.state.queryResults.length - 1
         )
           this.setState(prevState => ({ cursorIdx: prevState.cursorIdx + 1 }));
@@ -82,7 +82,7 @@ class SearchBox extends React.Component {
       case 13: {
         // enter pressed
         event.preventDefault();
-        if (this.hasResults()) {
+        if (this.showResults()) {
           this.handleClick({
             place_name: this.state.queryResults[this.state.cursorIdx].place_name
           });
@@ -111,18 +111,18 @@ class SearchBox extends React.Component {
   render() {
     return (
       <SearchBoxWrapper
-        onKeyDown={this.handleArrowKeys}
         onMouseLeave={this.handleMouseLeave}
+        onKeyDown={this.handleArrowKeys}
         onMouseEnter={this.handleMouseEnter}
       >
         <SearchInput
-          hasResults={this.hasResults()}
+          hasResults={this.showResults()}
           value={this.state.query}
           handleInputChange={this.handleInputChange}
         />
         <Suggestions
           places={this.state.queryResults}
-          hasResults={this.hasResults()}
+          hasResults={this.showResults()}
           clickHandler={this.handleClick}
           cursorIdx={this.state.cursorIdx}
           getMouseInSuggestions={this.getMouseInSuggestions}

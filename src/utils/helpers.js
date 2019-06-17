@@ -2,7 +2,6 @@ const buildQuery = (query, token, country = undefined) => {
   const base_url = "https://api.mapbox.com/geocoding/v5/mapbox.places/";
   const no_country = `${base_url}${query}.json?access_token=${token}`;
   const with_country = `${base_url}${query}.json?country=${country}&access_token=${token}`;
-  console.log(country);
   return country ? with_country : no_country;
 };
 
