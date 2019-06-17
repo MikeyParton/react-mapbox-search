@@ -143,4 +143,32 @@ class SearchBox extends React.Component {
   }
 }
 
+SearchBox.propTypes = {
+  /**
+   *  token for MapBox api
+   */
+  token: PropTypes.string.isRequired,
+
+  /**
+   *  ISO 3166-1 country code for MapBox api to narrow search
+   */
+  country: PropTypes.string.isRequired,
+
+  /**
+   *  callback function when user clicks suggestion, provides location object and click event object (when mouse click) as arguments
+   */
+  callback: PropTypes.func,
+
+  /**
+   *  color of currently selected suggestion
+   */
+
+  selectColor: PropTypes.string
+};
+
+SearchBox.defaultProps = {
+  selectColor: "#58a",
+  callback: undefined
+};
+
 export default SearchBox;
