@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Suggestion = ({
-  place_name,
+  place,
   clickHandler,
   cursorIdx,
   idx,
@@ -28,9 +28,9 @@ const Suggestion = ({
           ? { color: "white", background: selectColor }
           : null
       }
-      onClick={event => clickHandler({ place_name, event })}
+      onMouseDown={event => clickHandler({ location: place, event })}
     >
-      {place_name}
+      {place.place_name}
     </Wrapper>
   );
 };

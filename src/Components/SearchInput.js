@@ -18,11 +18,21 @@ const InputWrapper = styled.input`
   ${props => props.hasResults && "border-bottom-right-radius: 0;"}
 `;
 
-const SearchInput = ({ value, handleInputChange, hasResults }) => (
+const SearchInput = ({
+  value,
+  handleInputChange,
+  hasResults,
+  handleFocus,
+  handleBlur,
+  setRef
+}) => (
   <Wrapper>
     <FaSearch />
     <InputWrapper
+      ref={setRef}
       hasResults={hasResults}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
       placeholder="Search"
       value={value}
       onChange={handleInputChange}

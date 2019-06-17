@@ -23,18 +23,15 @@ const Suggestions = ({
   hasResults,
   clickHandler,
   cursorIdx,
+  mouseInSuggestions,
   getMouseInSuggestions,
   selectColor
 }) => {
-  const [mouseInSuggestions, setMouseInSuggestions] = useState(false);
-
   const handleMouseEnter = () => {
-    setMouseInSuggestions(true);
     getMouseInSuggestions(true);
   };
 
   const handleMouseLeave = () => {
-    setMouseInSuggestions(false);
     getMouseInSuggestions(false);
   };
 
@@ -52,7 +49,7 @@ const Suggestions = ({
             cursorIdx={cursorIdx}
             clickHandler={clickHandler}
             key={place.id}
-            {...place}
+            place={place}
           />
         ))}
       </SuggestionsList>

@@ -25,9 +25,10 @@ class SearchBox extends React.Component {
       query: "",
       queryResults: [],
       cursorIdx: 0,
-      mouseLeft: false,
-      getMouseInSuggestions: false
+      getMouseInSuggestions: false,
+      inputFocused: false
     };
+    this.inputRef = React.createRef();
   }
 
   handleInputChange = event => {
@@ -37,7 +38,7 @@ class SearchBox extends React.Component {
   };
 
   showResults = () => {
-    return this.state.queryResults.length > 0 && !this.state.mouseLeft;
+    return this.state.queryResults.length > 0 && this.state.inputFocused;
   };
 
   async sendQuery() {
@@ -51,9 +52,14 @@ class SearchBox extends React.Component {
     }
   }
 
-  handleClick = ({ event, place_name }) => {
-    this.setState({ query: place_name, queryResults: [], cursorIdx: 0 });
-    this.props.callback({ location: place_name, event });
+  handleClick = ({ event, location }) => {
+    console.log("handleClick");
+    this.setState({
+      query: location.place_name,
+      cursorIdx: 0,
+      getMouseInSuggestions: false
+    });
+    this.props.callback({ location, event });
   };
 
   handleArrowKeys = event => {
@@ -83,8 +89,9 @@ class SearchBox extends React.Component {
         // enter pressed
         event.preventDefault();
         if (this.showResults()) {
+          document.activeElement.blur();
           this.handleClick({
-            place_name: this.state.queryResults[this.state.cursorIdx].place_name
+            location: this.state.queryResults[this.state.cursorIdx]
           });
         }
       }
@@ -100,12 +107,12 @@ class SearchBox extends React.Component {
     }
   };
 
-  handleMouseLeave = () => {
-    this.setState({ mouseLeft: true, cursorIdx: 0 });
+  handleFocus = () => {
+    this.setState({ inputFocused: true });
   };
 
-  handleMouseEnter = () => {
-    this.setState({ mouseLeft: false });
+  handleBlur = () => {
+    this.setState({ inputFocused: false });
   };
 
   render() {
@@ -118,6 +125,8 @@ class SearchBox extends React.Component {
         <SearchInput
           hasResults={this.showResults()}
           value={this.state.query}
+          handleFocus={this.handleFocus}
+          handleBlur={this.handleBlur}
           handleInputChange={this.handleInputChange}
         />
         <Suggestions
@@ -126,6 +135,7 @@ class SearchBox extends React.Component {
           hasResults={this.showResults()}
           clickHandler={this.handleClick}
           cursorIdx={this.state.cursorIdx}
+          mouseInSuggestions={this.state.getMouseInSuggestions}
           getMouseInSuggestions={this.getMouseInSuggestions}
         />
       </SearchBoxWrapper>
