@@ -67,6 +67,12 @@ class SearchBox extends React.Component {
     if (this.state.getMouseInSuggestions) {
       return;
     }
+
+    const keyIsLetter = event.keyCode >= 65 && event.keyCode <= 90;
+    const keyIsBackspace = event.keyCode == 8;
+    if ((keyIsLetter || keyIsBackspace) && this.state.cursorIdx !== 0) {
+      this.setState({ cursorIdx: 0 });
+    }
     const { queryResults, cursorIdx } = this.state;
     switch (event.keyCode) {
       case 38: {
@@ -93,15 +99,20 @@ class SearchBox extends React.Component {
             location: queryResults[cursorIdx]
           });
         }
+        break;
       }
     }
   };
 
   getMouseInSuggestions = bool => {
-    const { getMouseInSuggestions, cursorIdx } = this.state;
-    if (getMouseInSuggestions !== bool) {
-      this.setState({ getMouseInSuggestions: bool });
-    }
+    const { cursorIdx } = this.state;
+
+    this.setState(prevState => {
+      if (prevState !== bool) {
+        this.setState({ getMouseInSuggestions: bool });
+      }
+    });
+
     if (bool && cursorIdx !== 0) {
       this.setState({ cursorIdx: 0 });
     }
