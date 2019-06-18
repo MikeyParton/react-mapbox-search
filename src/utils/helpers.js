@@ -6,7 +6,6 @@ const buildQuery = (query, token, country = undefined) => {
 };
 
 const getResults = async function(query, token, country = undefined) {
-  console.log("NOT MOCKED!!! :'(");
   if (query === "") {
     return {
       response: {

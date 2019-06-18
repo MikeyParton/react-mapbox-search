@@ -37,7 +37,8 @@ class SearchBox extends React.Component {
   };
 
   showResults = () => {
-    return this.state.queryResults.length > 0 && this.state.inputFocused;
+    const { queryResults, inputFocused } = this.state;
+    return queryResults.length > 0 && inputFocused;
   };
 
   async sendQuery() {
@@ -47,12 +48,11 @@ class SearchBox extends React.Component {
       if (queryResults.error) throw Error(queryResults.error);
       this.setState({ queryResults: queryResults.response.features });
     } catch (e) {
-      console.log("error");
+      console.log("Error connecting to MapBox api, check internet / api token");
     }
   }
 
   handleClick = ({ event, location }) => {
-    console.log("handleClick");
     this.setState({
       query: location.place_name,
       cursorIdx: 0,
@@ -67,21 +67,19 @@ class SearchBox extends React.Component {
     if (this.state.getMouseInSuggestions) {
       return;
     }
+    const { queryResults, cursorIdx } = this.state;
     switch (event.keyCode) {
       case 38: {
         // up arrow pressed
         event.preventDefault();
-        if (this.showResults() && this.state.cursorIdx > 0)
+        if (this.showResults() && cursorIdx > 0)
           this.setState(prevState => ({ cursorIdx: prevState.cursorIdx - 1 }));
         break;
       }
       case 40: {
         // down arrow pressed
         event.preventDefault();
-        if (
-          this.showResults() &&
-          this.state.cursorIdx < this.state.queryResults.length - 1
-        )
+        if (this.showResults() && cursorIdx < queryResults.length - 1)
           this.setState(prevState => ({ cursorIdx: prevState.cursorIdx + 1 }));
         break;
       }
@@ -92,7 +90,7 @@ class SearchBox extends React.Component {
         if (this.showResults()) {
           document.activeElement.blur();
           this.handleClick({
-            location: this.state.queryResults[this.state.cursorIdx]
+            location: queryResults[cursorIdx]
           });
         }
       }
@@ -100,10 +98,11 @@ class SearchBox extends React.Component {
   };
 
   getMouseInSuggestions = bool => {
-    if (this.state.getMouseInSuggestions !== bool) {
+    const { getMouseInSuggestions, cursorIdx } = this.state;
+    if (getMouseInSuggestions !== bool) {
       this.setState({ getMouseInSuggestions: bool });
     }
-    if (bool && this.state.cursorIdx !== 0) {
+    if (bool && cursorIdx !== 0) {
       this.setState({ cursorIdx: 0 });
     }
   };
@@ -117,6 +116,12 @@ class SearchBox extends React.Component {
   };
 
   render() {
+    const {
+      queryResults,
+      query,
+      cursorIdx,
+      getMouseInSuggestions
+    } = this.state;
     return (
       <SearchBoxWrapper
         onMouseLeave={this.handleMouseLeave}
@@ -125,18 +130,18 @@ class SearchBox extends React.Component {
       >
         <SearchInput
           hasResults={this.showResults()}
-          value={this.state.query}
+          value={query}
           handleFocus={this.handleFocus}
           handleBlur={this.handleBlur}
           handleInputChange={this.handleInputChange}
         />
         <Suggestions
-          places={this.state.queryResults}
+          places={queryResults}
           selectColor={this.props.selectColor}
           hasResults={this.showResults()}
           clickHandler={this.handleClick}
-          cursorIdx={this.state.cursorIdx}
-          mouseInSuggestions={this.state.getMouseInSuggestions}
+          cursorIdx={cursorIdx}
+          mouseInSuggestions={getMouseInSuggestions}
           getMouseInSuggestions={this.getMouseInSuggestions}
         />
       </SearchBoxWrapper>
