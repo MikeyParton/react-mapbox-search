@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Suggestions from "./Suggestions";
 import SearchInput from "./SearchInput";
-import { getResults } from "../utils/helpers";
+import getResults from "../utils/helpers";
 
 const SearchBoxWrapper = styled.div`
   width: 100%;
@@ -58,7 +58,9 @@ class SearchBox extends React.Component {
       cursorIdx: 0,
       getMouseInSuggestions: false
     });
-    this.props.callback({ location, event });
+    if (this.props.callback) {
+      this.props.callback({ location, event });
+    }
   };
 
   handleArrowKeys = event => {

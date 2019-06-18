@@ -23,13 +23,12 @@ const SearchInput = ({
   handleInputChange,
   hasResults,
   handleFocus,
-  handleBlur,
-  setRef
+  handleBlur
 }) => (
   <Wrapper>
     <FaSearch />
     <InputWrapper
-      ref={setRef}
+      displayName="input"
       hasResults={hasResults}
       onFocus={handleFocus}
       onBlur={handleBlur}

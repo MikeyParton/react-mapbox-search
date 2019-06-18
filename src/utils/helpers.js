@@ -6,6 +6,7 @@ const buildQuery = (query, token, country = undefined) => {
 };
 
 const getResults = async function(query, token, country = undefined) {
+  console.log("NOT MOCKED!!! :'(");
   if (query === "") {
     return {
       response: {
@@ -37,4 +38,4 @@ const getResults = async function(query, token, country = undefined) {
   }
 };
 
-export { getResults };
+export default getResults;
