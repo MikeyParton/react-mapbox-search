@@ -2,6 +2,8 @@
 
 A location picker powered by mapbox, implemented in React.
 
+![demo gif of react-mapbox-search](https://media.giphy.com/media/IffWfXObtB1KwxDUeQ/giphy.gif)
+
 ## Quick Start
 
 `npm i react-mapbox-search`
