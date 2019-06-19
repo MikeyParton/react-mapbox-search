@@ -169,7 +169,7 @@ SearchBox.propTypes = {
   /**
    *  ISO 3166-1 country code for MapBox api to narrow search
    */
-  country: PropTypes.string.isRequired,
+  country: PropTypes.string,
 
   /**
    *  callback function when user clicks suggestion, provides location object and click event object (when mouse click) as arguments
@@ -184,6 +184,7 @@ SearchBox.propTypes = {
 };
 
 SearchBox.defaultProps = {
+  country: undefined,
   selectColor: "#58a",
   callback: undefined
 };
