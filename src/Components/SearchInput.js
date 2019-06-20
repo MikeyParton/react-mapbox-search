@@ -23,7 +23,8 @@ const SearchInput = ({
   handleInputChange,
   hasResults,
   handleFocus,
-  handleBlur
+  handleBlur,
+  searchHint
 }) => (
   <Wrapper>
     <FaSearch />
@@ -32,7 +33,7 @@ const SearchInput = ({
       hasResults={hasResults}
       onFocus={handleFocus}
       onBlur={handleBlur}
-      placeholder="Search"
+      placeholder={searchHint}
       value={value}
       onChange={handleInputChange}
     />

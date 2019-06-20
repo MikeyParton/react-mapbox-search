@@ -144,6 +144,7 @@ class SearchBox extends React.Component {
           value={query}
           handleFocus={this.handleFocus}
           handleBlur={this.handleBlur}
+          searchHint={this.props.searchHint}
           handleInputChange={this.handleInputChange}
         />
         <Suggestions
@@ -179,14 +180,19 @@ SearchBox.propTypes = {
   /**
    *  color of currently selected suggestion
    */
+  selectColor: PropTypes.string,
 
-  selectColor: PropTypes.string
+  /**
+   *  hint text for input
+   */
+  searchHint: PropTypes.string
 };
 
 SearchBox.defaultProps = {
   country: undefined,
   selectColor: "#58a",
-  callback: undefined
+  callback: undefined,
+  searchHint: "Search"
 };
 
 export default SearchBox;
