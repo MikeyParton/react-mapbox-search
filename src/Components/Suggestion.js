@@ -1,6 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
+const Wrapper = styled.div`
+  font-size: 14px;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    color: white;
+    background-color: ${props => props.selectColor};
+  }
+`;
+
 const Suggestion = ({
   place,
   clickHandler,
@@ -9,20 +21,9 @@ const Suggestion = ({
   selectColor,
   mouseInSuggestions
 }) => {
-  const Wrapper = styled.div`
-    font-size: 14px;
-    padding: 1rem 1.5rem 1rem 1.5rem;
-    cursor: pointer;
-    width: 100%;
-
-    &:hover {
-      color: white;
-      background-color: ${selectColor};
-    }
-  `;
-
   return (
     <Wrapper
+      selectColor={selectColor}
       style={
         cursorIdx === idx && !mouseInSuggestions
           ? { color: "white", background: selectColor }
