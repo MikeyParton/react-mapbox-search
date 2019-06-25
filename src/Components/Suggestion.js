@@ -19,13 +19,14 @@ const Suggestion = ({
   cursorIdx,
   idx,
   selectColor,
-  mouseInSuggestions
+  mouseInSuggestions,
+  isTouch
 }) => {
   return (
     <Wrapper
       selectColor={selectColor}
       style={
-        cursorIdx === idx && !mouseInSuggestions
+        cursorIdx === idx && !mouseInSuggestions && !isTouch
           ? { color: "white", background: selectColor }
           : null
       }
