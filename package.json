@@ -1,6 +1,6 @@
 {
   "name": "@seanhouli/react-mapbox-search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A location picker component that uses Mapbox's places API to provide location suggestions",
   "main": "dist/index",
   "scripts": {
