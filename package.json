@@ -12,6 +12,13 @@
   "repository": "https://github.com/seanhouli/react-mapbox-search",
   "author": "Sean Houilhan",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "mapbox",
+    "location picker",
+    "location",
+    "suggestions"
+  ],
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
