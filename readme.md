@@ -20,8 +20,8 @@ A location picker powered by mapbox, implemented in React.
 
 ## Usage
 
-```
-import SearchBox from "react-mapbox-search";
+```javascript
+import SearchBox from "@seanhouli/react-mapbox-search";
 
 <SearchBox
     token={mapBoxApiToken}
