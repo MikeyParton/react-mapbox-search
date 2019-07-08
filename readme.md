@@ -43,3 +43,4 @@ import SearchBox from "@seanhouli/react-mapbox-search";
 | callback    | function | undefined | Callback function fired when suggestion chosen |
 | selectColor | string   | "#58A"    | Color for currently selected suggestion item   |
 | searchHint  | string   | "Search"  | Placeholder text for input when empty          |
+| query       | string   | ""        | Default query to populate input                |

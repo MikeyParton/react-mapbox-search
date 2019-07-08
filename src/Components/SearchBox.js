@@ -24,7 +24,7 @@ class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "",
+      query: props.query,
       queryResults: [],
       cursorIdx: 0,
       getMouseInSuggestions: false,
@@ -188,14 +188,20 @@ SearchBox.propTypes = {
   /**
    *  hint text for input
    */
-  searchHint: PropTypes.string
+  searchHint: PropTypes.string,
+
+  /**
+   *  default query text
+   */
+  query: PropTypes.string
 };
 
 SearchBox.defaultProps = {
   country: undefined,
   selectColor: "#58a",
   callback: undefined,
-  searchHint: "Search"
+  searchHint: "Search",
+  query: ""
 };
 
 export default SearchBox;
