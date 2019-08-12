@@ -1,6 +1,3 @@
-import SearchBox from './Components/SearchBox'
-import { getResults } from './utils/helpers'
+import SearchBox from "./Components/SearchBox";
 
-console.log(getResults)
-
-export { SearchBox, getResults }
+export default SearchBox;

@@ -1,34 +1,62 @@
-import React from 'react'
-import styled from 'styled-components'
-import Suggestion from './Suggestion'
+import React from "react";
+import styled from "styled-components";
+import Suggestion from "./Suggestion";
 
 const Wrapper = styled.span`
   position: relative;
-  display: ${({hasResults}) => hasResults ? 'flex' : 'none'};
+  display: ${({ hasResults }) => (hasResults ? "flex" : "none")};
   z-index: 9999;
   background-color: #fff;
   border: 1px solid #ccc;
   border-top: none;
-  border-color: #979797;
+  border-color: #d3d3d3;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-`
+`;
 
 const SuggestionsList = styled.div`
-  padding-top: 10px;
   width: 100%;
-`
+`;
 
-const Suggestions = ({places, hasResults}) => (
-  <Wrapper hasResults={hasResults}>
-    <SuggestionsList>
-      {
-        places.map(place => {
-          return <Suggestion key={place.id} {...place} />
-        })
-      }
-    </SuggestionsList>
-  </Wrapper>
-)
+const Suggestions = ({
+  places,
+  hasResults,
+  clickHandler,
+  cursorIdx,
+  mouseInSuggestions,
+  getMouseInSuggestions,
+  selectColor,
+  isTouch
+}) => {
+  const handleMouseEnter = () => {
+    getMouseInSuggestions(true);
+  };
 
-export default Suggestions
+  const handleMouseLeave = () => {
+    getMouseInSuggestions(false);
+  };
+
+  return (
+    <Wrapper hasResults={hasResults}>
+      <SuggestionsList
+        onMouseEnter={!isTouch && handleMouseEnter}
+        onMouseLeave={!isTouch && handleMouseLeave}
+      >
+        {places.map((place, idx) => (
+          <Suggestion
+            selectColor={selectColor}
+            mouseInSuggestions={mouseInSuggestions}
+            idx={idx}
+            isTouch={isTouch}
+            cursorIdx={cursorIdx}
+            clickHandler={clickHandler}
+            key={place.id}
+            place={place}
+          />
+        ))}
+      </SuggestionsList>
+    </Wrapper>
+  );
+};
+
+export default Suggestions;
